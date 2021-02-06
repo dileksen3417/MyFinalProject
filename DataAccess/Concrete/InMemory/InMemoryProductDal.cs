@@ -27,7 +27,13 @@ namespace DataAccess.Concrete.InMemory
         {
             return _products; //bana liste döndür diyor o yüzden veritabanımı oldugu gibi gönderiyorum.
         }
-
+        public List<Product> GetAllByCategory(int categoryId)
+        {
+            //sqldeki select gibi yazmam lazımi bunun için LINQ yapısının Where methodu var. 
+            //p=> için yazdığımız kurala uyan tüm dataları getirir.
+            //To.List ile listeye atarız.
+            return _products.Where(p => p.CategoryId == categoryId).ToList();
+        }
         public void Add(Product product)
         {
             _products.Add(product); //veritabanım _product olsun, listeye ekleme işini Add ile yapıyordum o yüzden byle yazdım.
@@ -68,12 +74,5 @@ namespace DataAccess.Concrete.InMemory
             productToUpdate.UnitsInStock = product.UnitsInStock;
         }
 
-        public List<Product> GetAllByCategory(int categoryId)
-        {
-            //sqldeki select gibi yazmam lazımi bunun için LINQ yapısının Where methodu var. 
-            //p=> için yazdığımız kurala uyan tüm dataları getirir.
-            //To.List ile listeye atarız.
-            return _products.Where(p => p.CategoryId == categoryId).ToList();
-        }
     }
 }
