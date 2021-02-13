@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
@@ -61,6 +62,7 @@ namespace DataAccess.Concrete.InMemory
             // p=> lambda işareti deriz işte bu foreachteki foreach (var p in _products) 'e karşılık gelir yani listeyi gez deriz
 
             Product productToDelete = _products.SingleOrDefault(p=>p.ProductId==product.ProductId); //her bir p için , prodcut id eşit ise bul al demek
+            _products.Remove(productToDelete);
         }
 
         public void Update(Product product)
@@ -74,5 +76,14 @@ namespace DataAccess.Concrete.InMemory
             productToUpdate.UnitsInStock = product.UnitsInStock;
         }
 
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

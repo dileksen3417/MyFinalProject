@@ -21,5 +21,15 @@ namespace Business.Concrete
             // vs vs kuralları koyarız bunlardan gecerse alttaki kod cagrılır ve liste döner.
             return _productDal.GetAll();
         }
+
+        public List<Product> GetAllByCategoryId(int id)
+        {
+            return _productDal.GetAll(p => p.CategoryId == id);//her p için gönderdiğim id categoryid'e eşit ise onları filtrele
+        }
+
+        public List<Product> GetByUnitPrice(decimal min, decimal max)
+        {
+            return _productDal.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max);
+        }
     }
 }
