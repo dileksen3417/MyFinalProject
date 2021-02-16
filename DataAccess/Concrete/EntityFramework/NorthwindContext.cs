@@ -7,7 +7,7 @@ using System.Text;
 namespace DataAccess.Concrete.EntityFramework
 {
     //Context : db tabloları ile proje classlarını ilişkilendirmek demektir.
-    class NorthwindContext:DbContext //DbContext, framework içinde yer alan bir base classtır. Yani bu classı gerçekten Context yapabilmek için DbContext classını base al deriz. 
+    public class NorthwindContext:DbContext //DbContext, framework içinde yer alan bir base classtır. Yani bu classı gerçekten Context yapabilmek için DbContext classını base al deriz. 
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)//veritabanımızın baglantısını yapalım
         {
@@ -19,5 +19,6 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Product> Products { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }
